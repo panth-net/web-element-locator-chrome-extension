@@ -1,0 +1,341 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f7f8;
+  --surface: #ffffff;
+  --surface-strong: #f1f2f4;
+  --text: #161719;
+  --muted: #6d7179;
+  --line: #d8dbe0;
+  --line-strong: #c8ccd3;
+  --accent: #0a84ff;
+  --accent-pressed: #006edb;
+  --danger: #b3261e;
+  --shadow: 0 16px 40px rgba(20, 22, 26, 0.16);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 320px;
+  max-width: 360px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+
+body {
+  width: 336px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.popup-shell {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.field-group {
+  display: grid;
+  gap: 7px;
+}
+
+.field-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.fields-dropdown {
+  position: relative;
+}
+
+.fields-button,
+.primary-button {
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  min-height: 40px;
+  cursor: pointer;
+}
+
+.fields-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 12px;
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--text);
+  text-align: left;
+}
+
+.fields-button:hover {
+  border-color: var(--line-strong);
+  background: #fbfbfc;
+}
+
+.fields-button:focus-visible,
+.primary-button:focus-visible,
+.text-button:focus-visible,
+.field-option input:focus-visible {
+  outline: 3px solid rgba(10, 132, 255, 0.24);
+  outline-offset: 2px;
+}
+
+.chevron {
+  width: 8px;
+  height: 8px;
+  border-bottom: 1.5px solid var(--muted);
+  border-right: 1.5px solid var(--muted);
+  transform: rotate(45deg) translateY(-2px);
+  flex: 0 0 auto;
+}
+
+.fields-button[aria-expanded="true"] .chevron {
+  transform: rotate(225deg) translateY(-1px);
+}
+
+.fields-menu {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  display: grid;
+  gap: 4px;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.fields-menu[hidden] {
+  display: none;
+}
+
+.field-option {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  align-items: center;
+  min-height: 48px;
+  padding: 8px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.field-option:hover,
+.field-option:focus-within {
+  background: var(--surface-strong);
+}
+
+.field-option input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.field-option.is-checked {
+  background: rgba(10, 132, 255, 0.08);
+}
+
+.field-option.is-locked {
+  cursor: default;
+}
+
+.field-option.is-locked input {
+  opacity: 0.7;
+}
+
+.option-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.option-title {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.field-option small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.primary-button {
+  padding: 0 14px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 650;
+}
+
+.primary-button:hover {
+  background: var(--accent-pressed);
+}
+
+.primary-button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.shortcut,
+.privacy-note,
+.status-message {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.status-message {
+  min-height: 16px;
+}
+
+.status-message.is-error {
+  color: var(--danger);
+}
+
+.shortcut-block {
+  display: grid;
+  gap: 8px;
+}
+
+.shortcut-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 26px;
+}
+
+.shortcut {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.shortcut-keys {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.shortcut-unset {
+  color: var(--text);
+  font-weight: 650;
+}
+
+.key-cap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1;
+  cursor: default;
+}
+
+.key-cap.is-symbol {
+  font-size: 13px;
+}
+
+.key-join {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.text-button {
+  flex: 0 0 auto;
+  min-height: 26px;
+  padding: 0 8px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  background: rgba(10, 132, 255, 0.08);
+}
+
+.text-button:active {
+  color: var(--accent-pressed);
+}
+
+.text-button.is-prominent {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+.text-button.is-prominent:hover {
+  border-color: var(--line-strong);
+}
+
+.shortcut-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.shortcut-panel[hidden] {
+  display: none;
+}
+
+.shortcut-panel-copy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.shortcut-panel-copy strong {
+  color: var(--text);
+  font-weight: 650;
+}
+
+.primary-button.is-compact {
+  min-height: 36px;
+  font-size: 13px;
+}

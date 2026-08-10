@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Element Locator</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup-shell">
+      <header class="popup-header">
+        <h1>Web Element Locator</h1>
+      </header>
+
+      <section class="field-group" aria-labelledby="copyFieldsLabel">
+        <label id="copyFieldsLabel" class="field-label">Copy fields</label>
+
+        <div id="fieldsDropdown" class="fields-dropdown">
+          <button
+            id="fieldsButton"
+            class="fields-button"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-labelledby="copyFieldsLabel fieldsSummary"
+          >
+            <span id="fieldsSummary">Page, Target, Owner</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+
+          <div
+            id="fieldsMenu"
+            class="fields-menu"
+            role="listbox"
+            aria-multiselectable="true"
+            hidden
+          >
+            <label class="field-option is-locked" role="option" aria-selected="true" data-field="target">
+              <input id="field-target" type="checkbox" value="target" checked disabled>
+              <span class="option-copy">
+                <span class="option-title">Target</span>
+                <small>Exact clicked element</small>
+              </span>
+            </label>
+
+            <label class="field-option" role="option" aria-selected="true" data-field="page">
+              <input id="field-page" type="checkbox" value="page" checked>
+              <span class="option-copy">
+                <span class="option-title">Page</span>
+                <small>Route/path context</small>
+              </span>
+            </label>
+
+            <label class="field-option" role="option" aria-selected="true" data-field="owner">
+              <input id="field-owner" type="checkbox" value="owner" checked>
+              <span class="option-copy">
+                <span class="option-title">Owner</span>
+                <small>Likely parent UI region</small>
+              </span>
+            </label>
+
+            <label class="field-option" role="option" aria-selected="false" data-field="selector">
+              <input id="field-selector" type="checkbox" value="selector">
+              <span class="option-copy">
+                <span class="option-title">Selector</span>
+                <small>Stable DOM selector</small>
+              </span>
+            </label>
+
+            <label class="field-option" role="option" aria-selected="false" data-field="html">
+              <input id="field-html" type="checkbox" value="html">
+              <span class="option-copy">
+                <span class="option-title">HTML</span>
+                <small>Short opening tag/excerpt</small>
+              </span>
+            </label>
+
+            <label class="field-option" role="option" aria-selected="false" data-field="position">
+              <input id="field-position" type="checkbox" value="position">
+              <span class="option-copy">
+                <span class="option-title">Position</span>
+                <small>Viewport box coordinates</small>
+              </span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <button id="identifyButton" class="primary-button" type="button">
+        Identify Element
+      </button>
+
+      <div id="shortcutBlock" class="shortcut-block">
+        <div class="shortcut-row">
+          <p class="shortcut">
+            <span class="shortcut-lead">Shortcut:</span>
+            <span id="shortcutKeys" class="shortcut-keys"></span>
+          </p>
+          <button
+            id="shortcutEditButton"
+            class="text-button"
+            type="button"
+            aria-label="Edit keyboard shortcut"
+            aria-expanded="false"
+            aria-controls="shortcutPanel"
+          >Edit</button>
+        </div>
+
+        <div id="shortcutPanel" class="shortcut-panel" hidden>
+          <p class="shortcut-panel-copy">
+            Set the shortcut in Chrome.<br>
+            Find <strong>Web Element Locator</strong> in the list.<br>
+            Set its <strong>Identify a page element</strong> shortcut.
+          </p>
+          <button id="openShortcutsButton" class="primary-button is-compact" type="button">
+            Open Chrome shortcuts
+          </button>
+        </div>
+      </div>
+
+      <p class="privacy-note">No data is sent anywhere.</p>
+      <p id="statusMessage" class="status-message" aria-live="polite"></p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
